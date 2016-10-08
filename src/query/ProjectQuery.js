@@ -1,10 +1,10 @@
 import { GraphQLID } from 'graphql';
 import { connectionArgs, connectionFromArray } from 'graphql-relay';
-import { ProjectConnectionType } from '../type/ProjectType';
+import { ProjectWithG0verConnectionType } from '../type/ProjectWithG0verType';
 import Project from '../model/Project';
 
 export default {
-  type: ProjectConnectionType,
+  type: ProjectWithG0verConnectionType,
   args: {
     id: { type: GraphQLID },
     title: { type: GraphQLID },

@@ -2,7 +2,7 @@ const faker = require('faker');
 const _ = require('lodash');
 
 exports.seed = (knex, Promise) => (
-  knex('g0ver').truncate()
+  knex('project').truncate()
     .then(() => (
       Promise.all(_.range(1, 100).map(() => (
         knex('project').insert({

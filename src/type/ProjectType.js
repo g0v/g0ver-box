@@ -1,6 +1,6 @@
 import { GraphQLID, GraphQLObjectType, GraphQLString } from 'graphql';
-import { connectionDefinitions } from 'graphql-relay';
 import _ from 'lodash';
+import { connectionDefinitions } from 'graphql-relay';
 
 const ProjectType = new GraphQLObjectType({
   name: 'Project',

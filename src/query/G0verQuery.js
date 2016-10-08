@@ -1,10 +1,10 @@
 import { GraphQLID } from 'graphql';
 import { connectionArgs, connectionFromArray } from 'graphql-relay';
-import { G0verConnectionType } from '../type/G0verType';
+import { G0verWithProjectConnectionType } from '../type/G0verWithProjectType';
 import G0ver from '../model/G0ver';
 
 export default {
-  type: G0verConnectionType,
+  type: G0verWithProjectConnectionType,
   args: {
     id: { type: GraphQLID },
     username: { type: GraphQLID },
