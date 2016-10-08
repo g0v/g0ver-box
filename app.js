@@ -2,7 +2,7 @@ import express from 'express';
 import expressGraphQL from 'express-graphql';
 import Schema from './src/Schema';
 
-const NODE_PORT = process.env.NODE_PORT || 8080;
+const NODE_PORT = process.env.PORT || 8080;
 
 const server = express();
 
