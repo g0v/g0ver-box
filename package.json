@@ -4,7 +4,7 @@
   "description": "hub for g0v",
   "main": "app.js",
   "scripts": {
-    "start": "babel-node ./app.js",
+    "start": "./node_modules/.bin/babel-node ./app.js",
     "watch": "export NODE_ENV=development; nodemon --exec npm run start",
     "schema": "babel-node ./script/migration-schema.js",
     "test": "jest --coverage",
