@@ -1,15 +1,15 @@
 import { GraphQLObjectType, GraphQLSchema } from 'graphql';
 
-import G0verQuery from './query/G0verQuery';
-import ProjectQuery from './query/ProjectQuery';
+import { G0verConnection } from './query/G0verQuery';
+import { ProjectConnection } from './query/ProjectQuery';
 
 import UpdateG0verMutation from './mutation/UpdateG0verMutation';
 
 const Query = new GraphQLObjectType({
   name: 'Query',
   fields: {
-    g0ver: G0verQuery,
-    product: ProjectQuery,
+    g0ver: G0verConnection,
+    product: ProjectConnection,
   },
 });
 

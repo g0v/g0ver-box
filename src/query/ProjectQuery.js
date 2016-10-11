@@ -1,14 +1,13 @@
 import { GraphQLID } from 'graphql';
-import { connectionArgs, connectionFromArray } from 'graphql-relay';
-import { ProjectWithG0verConnectionType } from '../type/ProjectWithG0verType';
+import queryWithConnection from '../help/queryWithConnection';
+import GraphQLProject from '../type/GraphQLProject';
 import Project from '../model/Project';
 
-export default {
-  type: ProjectWithG0verConnectionType,
+const { Connection, ...G0verQuery } = queryWithConnection({
+  type: GraphQLProject,
   args: {
     id: { type: GraphQLID },
     title: { type: GraphQLID },
-    ...connectionArgs,
   },
   resolve: async (payload, args) => {
     const model = new Project();
@@ -16,6 +15,9 @@ export default {
     if (args.title) model.where({ title: args.title });
 
     const project = await model.fetchAll();
-    return connectionFromArray(project.toJSON(), args);
+    return project.toJSON();
   },
-};
+});
+
+export default G0verQuery;
+export const ProjectConnection = Connection;
