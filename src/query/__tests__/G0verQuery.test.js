@@ -60,4 +60,20 @@ describe('G0ver Query', () => {
     });
     expect(_.size(edges)).toBe(1);
   });
+
+  it('query any g0ver', async () => {
+    query.mockClear();
+    query.mockReturnValueOnce(Promise.resolve(data));
+    const result = await graphql(Schema, request());
+    expect(result.errors).toBeUndefined();
+    expect(sqlparser(query, 0)).toEqual({ table: 'g0ver', method: 'select' });
+    const edges = _.get(result, 'data.g0ver.edges');
+    _.forEach(edges, ({ node }, idx) => {
+      expect(node).toEqual({
+        ..._.omit(data[idx], 'project_list'),
+        project: [],
+      });
+    });
+    expect(_.size(edges)).toBe(data.length);
+  });
 });

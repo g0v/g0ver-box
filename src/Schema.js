@@ -9,7 +9,7 @@ const Query = new GraphQLObjectType({
   name: 'Query',
   fields: {
     g0ver: G0verConnection,
-    product: ProjectConnection,
+    project: ProjectConnection,
   },
 });
 

@@ -1,13 +1,14 @@
 import { GraphQLID } from 'graphql';
 import queryWithConnection from '../help/queryWithConnection';
 import GraphQLProject from '../type/GraphQLProject';
+import GraphQLPrimary from '../type/GraphQLPrimary';
 import Project from '../model/Project';
 import G0verProject from '../model/G0verProject';
 
 const { Connection, ...G0verQuery } = queryWithConnection({
   type: GraphQLProject,
   args: {
-    id: { type: GraphQLID },
+    id: { type: GraphQLPrimary },
     title: { type: GraphQLID },
   },
   resolve: async (payload, args) => {
