@@ -13,7 +13,7 @@ import schema from '../src/Schema';
     );
   } else {
     fs.writeFileSync(
-      path.join(__dirname, '../../mobile/schema.json'),
+      path.join(__dirname, '../schema.json'),
       JSON.stringify(result, null, 2)
     );
 
