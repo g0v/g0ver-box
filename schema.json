@@ -88,7 +88,7 @@
               "deprecationReason": null
             },
             {
-              "name": "product",
+              "name": "project",
               "description": null,
               "args": [
                 {
@@ -96,7 +96,7 @@
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "Primary",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -419,7 +419,7 @@
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "Primary",
                     "ofType": null
                   },
                   "defaultValue": null

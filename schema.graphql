@@ -2,7 +2,7 @@ type G0ver {
   id: Primary
   username: String
   skill: [String]
-  project(id: ID, title: ID): [Project]
+  project(id: Primary, title: ID): [Project]
 }
 
 # A connection to a list of items.
@@ -75,7 +75,7 @@ type ProjectEdge {
 
 type Query {
   g0ver(id: Primary, username: ID, after: String, first: Int, before: String, last: Int): G0verConnection
-  product(id: ID, title: ID, after: String, first: Int, before: String, last: Int): ProjectConnection
+  project(id: Primary, title: ID, after: String, first: Int, before: String, last: Int): ProjectConnection
 }
 
 input UpdateG0verInput {
