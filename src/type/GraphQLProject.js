@@ -7,6 +7,7 @@ export default new GraphQLObjectType({
   name: 'Project',
   fields: () => ({
     id: { type: GraphQLPrimary },
+    projectId: { type: GraphQLString },
     title: { type: GraphQLString },
     description: { type: GraphQLString },
     website: new GraphQLJsonField(GraphQLString),
