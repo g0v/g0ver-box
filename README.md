@@ -40,6 +40,8 @@ npm run migrate
 
 ## Before you start
 
+Install the dependencies through your package management tool
+
 ```
 yarn && yarn start
 ```
@@ -50,6 +52,8 @@ npm install && npm start
 
 ## Test
 
+Run all unit-tests
+
 ```
 yarn test
 ```
@@ -57,6 +61,8 @@ or
 ```
 npm test
 ```
+
+Run the test related to files
 
 ```
 yarn test-watch
