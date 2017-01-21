@@ -12,6 +12,13 @@
 - search <skill name> 搜尋哪些 g0ver 會此技能
 - whois <slack id> 查詢此 g0ver 有哪些技能
 
+## Environment Variables
+
+* DATABASE_URL (required)
+* SLACK_TOKEN
+* SLACK_BOT_ID
+* PORT
+
 ## Dependencies
 
 * nodemon

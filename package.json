@@ -55,6 +55,7 @@
     "moment": "^2.15.1",
     "nodemon": "^1.11.0",
     "pg": "^6.1.0",
-    "query-string": "^4.2.3"
+    "query-string": "^4.2.3",
+    "slack": "^8.2.0"
   }
 }
