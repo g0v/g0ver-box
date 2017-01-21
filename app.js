@@ -30,13 +30,13 @@ const users = new Map();
 
 bot.message(async (data) => {
   const { channel, user, username } = data;
-  const text = data.text.replace(new RegExp(` *<${process.env.SLACK_BOT_ID}> *`), '');
+  const text = data.text.replace(new RegExp(` *<@${process.env.SLACK_BOT_ID}> *`), '');
 
-  if (username === 'bot') return;
+  if (username === 'bot' || user === process.env.SLACK_BOT_ID) return;
 
   if (!(
     /^D/.test(channel) ||
-    (/^C/.test(channel) && (data.text || '').search(`<${process.env.SLACK_BOT_ID}>`) > -1)
+    (/^C/.test(channel) && (data.text || '').search(`<@${process.env.SLACK_BOT_ID}>`) > -1)
   )) return;
 
   let name = users.get(user);
