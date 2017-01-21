@@ -12,8 +12,11 @@ const client = class extends knex.Client {
       timeout: async() => (completed),
     };
     const abort = () => {};
+    const then = (cb) => {
+      cb({ timeout: async() => (completed) });
+    };
 
-    return { completed, abort };
+    return { completed, abort, then };
   }
 
   processResponse = resp => resp;
