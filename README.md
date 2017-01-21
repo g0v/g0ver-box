@@ -8,9 +8,13 @@
 * eslint
 * jest
 
+## Yarn supported
+
+We suggest you to use yarn to manage package.
+
 ## Setup developing environment
 
-We recommanded you using postgres docker as your database.
+We recommended you using postgres docker as your database.
 
 ```
 docker run -p 54320:5432 --name g0v-postgres -e POSTGRES_PASSWORD='' -e POSTGRES_DB='g0vhub' -d postgres
@@ -27,5 +31,37 @@ host: <DOCKER_MACHINE_HOST>,
 Please run this command when database started up.
 
 ```
+yarn migrate
+```
+or
+```
 npm run migrate
+```
+
+## Before you start
+
+```
+yarn && yarn start
+```
+or
+```
+npm install && npm start
+```
+
+## Test
+
+```
+yarn test
+```
+or
+```
+npm test
+```
+
+```
+yarn test-watch
+```
+or
+```
+npm test-watch
 ```
