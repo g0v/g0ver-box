@@ -23,7 +23,7 @@ const call = (name, req = {}) => (
 
 export default {
   userInfo: async req => await call('users.info', req),
-  postMessage: async req => await call('chat.postMessage', req),
+  postMessage: async req => await call('chat.postMessage', { ...req, as_user: true }),
   channelInfo: async req => await call('channels.info', req),
   channelJoin: async req => await call('channels.join', req),
 };
