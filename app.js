@@ -4,6 +4,7 @@ import expressGraphQL from 'express-graphql';
 import slack, { bot } from './slack';
 import Schema from './src/Schema';
 import command from './src/command';
+import g0ver from './src/bot';
 
 const NODE_PORT = process.env.PORT || 8080;
 
@@ -41,7 +42,7 @@ bot.message(async (data) => {
 
   let name = users.get(user);
 
-  console.log(JSON.stringify(data));
+  console.log('rtm: ', JSON.stringify(data));
 
   if (!name) {
     const infoReply = await slack.userInfo({ user });
@@ -51,7 +52,8 @@ bot.message(async (data) => {
   const argument = /^([^ ]+) (.+)/.exec(text);
   if (argument && command[argument[1]]) {
     command[argument[1]]({ argument: argument[2], ...data });
+    return;
   }
 
-  await slack.postMessage({ channel, text: `@${name} ${text}` });
+  g0ver({ name, ...data });
 });
