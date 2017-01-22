@@ -17,12 +17,15 @@ const wordTree = _.reduce(synonyms, (structure, value, word) => {
 
 export default function (sentence) {
   const report = [];
-  _.reduce((sentence || '').toLowerCase().match(splitRegex), (wordObj, key) => {
+  const structured = (sentence || '').toLowerCase().match(splitRegex);
+  structured.push('');
+
+  _.reduce(structured, (wordObj, key) => {
     const word = report.pop() || '';
-    if (!wordObj[key]) {
+    if (!wordObj[key] || key === '') {
       if (!_.isUndefined(wordObj[''])) {
         if (wordObj['']) report.push(wordObj['']);
-        report.push(key);
+        if (key) report.push(key);
       } else if (!wordTree[key]) {
         report.push(word + key);
       } else {
