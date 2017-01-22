@@ -31,7 +31,7 @@ const users = new Map();
 
 bot.message(async (data) => {
   const { channel, user, username } = data;
-  const text = data.text.replace(new RegExp(` *<@${process.env.SLACK_BOT_ID}> *`), '');
+  const text = data.text.replace(new RegExp(` *<@${process.env.SLACK_BOT_ID}> *`, 'i'), '');
 
   if (username === 'bot' || user === process.env.SLACK_BOT_ID) return;
 
@@ -55,5 +55,5 @@ bot.message(async (data) => {
     return;
   }
 
-  g0ver({ name, ...data });
+  g0ver({ ...data, name, text });
 });
