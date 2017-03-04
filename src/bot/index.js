@@ -6,7 +6,7 @@ import addSkill from './addSkill';
 
 const qna = {
   '^hello$': sayHi,
-  '^我可以': addSkill,
+  '^me can': addSkill,
 };
 
 export default function (data) {
