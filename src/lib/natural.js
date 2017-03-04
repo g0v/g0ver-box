@@ -18,27 +18,19 @@ const wordTree = _.reduce(synonyms, (structure, value, word) => {
 export default function (sentence) {
   const report = [];
   const structured = (sentence || '').toLowerCase().match(splitRegex);
-  structured.push('');
 
-  _.reduce(structured, (wordObj, key) => {
-    const word = report.pop() || '';
-    if (!wordObj[key] || key === '') {
-      if (!_.isUndefined(wordObj[''])) {
-        if (wordObj['']) report.push(wordObj['']);
-        if (key) report.push(key);
-      } else if (!wordTree[key]) {
-        report.push(word + key);
-      } else {
-        report.push(word);
-        report.push(key);
-      }
+  let mindmap = {};
+  let index = 0;
+  while (structured.length) {
+    const word = structured.shift();
 
-      return wordTree[key] || {};
-    }
+    if (!mindmap[word]) {
+      if (report[index]) index += 1;
+      mindmap = wordTree[word] || {};
+    } else mindmap = mindmap[word];
 
-    report.push(word + key);
-    return wordObj[key];
-  }, wordTree);
+    if (mindmap['']) report[index] = mindmap[''];
+  }
 
   return report;
 }
