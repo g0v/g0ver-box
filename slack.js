@@ -3,8 +3,10 @@ import slack from 'slack';
 
 export const bot = slack.rtm.client();
 
-if (process.env.SLACK_TOKEN) {
-  bot.listen({ token: process.env.SLACK_TOKEN });
+const TOKEN = process.env.SLACK_TOKEN;
+
+if (TOKEN) {
+  bot.listen({ token: TOKEN });
 }
 
 bot.hello((message) => {
@@ -15,7 +17,7 @@ const call = (name, req = {}) => (
   new Promise((resolve, reject) => {
     const fn = _.get(slack, name);
     fn(
-      { ...req, token: process.env.SLACK_TOKEN },
+      { ...req, token: TOKEN },
       (err, res) => (err ? reject(err) : resolve(res))
     );
   })
