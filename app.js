@@ -7,6 +7,7 @@ import command from './src/command';
 import g0ver from './src/bot';
 
 const NODE_PORT = process.env.PORT || 8080;
+const BOT_NAME = process.env.SLACK_BOT_ID || 'g0ver';
 
 const server = express();
 
@@ -31,13 +32,13 @@ const users = new Map();
 
 bot.message(async (data) => {
   const { channel, user, username } = data;
-  const text = data.text.replace(new RegExp(` *<@${process.env.SLACK_BOT_ID}> *`, 'i'), '');
+  const text = data.text.replace(new RegExp(` *<@${BOT_NAME}> *`, 'i'), '');
 
-  if (username === 'bot' || user === process.env.SLACK_BOT_ID) return;
+  if (username === 'bot' || user === BOT_NAME) return;
 
   if (!(
     /^D/.test(channel) ||
-    (/^C/.test(channel) && (data.text || '').search(`<@${process.env.SLACK_BOT_ID}>`) > -1)
+    (/^C/.test(channel) && (data.text || '').search(`<@${BOT_NAME}>`) > -1)
   )) return;
 
   let name = users.get(user);
