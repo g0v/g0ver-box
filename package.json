@@ -1,7 +1,7 @@
 {
-  "name": "hub",
+  "name": "g0ver-box",
   "version": "1.0.0",
-  "description": "hub for g0v",
+  "description": "A macthmaking slack-bot for g0v projects and g0v attendees.",
   "main": "app.js",
   "scripts": {
     "start": "./node_modules/.bin/babel-node ./app.js",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/g0v/hub.git"
+    "url": "git+https://github.com/g0v/g0ver-box.git"
   },
   "author": "g0v",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/g0v/hub/issues"
+    "url": "https://github.com/g0v/g0ver-box/issues"
   },
-  "homepage": "https://github.com/g0v/hub#readme",
+  "homepage": "https://github.com/g0v/g0ver-box#readme",
   "jest": {
     "testEnvironment": "node"
   },
