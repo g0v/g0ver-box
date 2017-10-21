@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`out command when g0ver have been a task 1`] = `
+Array [
+  "select * from task where expired_at > DATE and deleted_at is null and user_id = yutin limit 1",
+]
+`;
+
+exports[`out command when g0ver no any task 1`] = `
+Array [
+  "select * from task where expired_at > DATE and deleted_at is null and user_id = yutin limit 1",
+]
+`;

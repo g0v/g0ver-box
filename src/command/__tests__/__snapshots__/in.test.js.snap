@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`in command when g0ver have setting expired 1`] = `
+Array [
+  "update task set deleted_at = DATE where user_id = yutin and deleted_at is null and expired_at > DATE",
+  "insert into task (created_at, expired_at, note, updated_at, user_id) values (DATE, DATE, g0ver box, DATE, yutin) returning id",
+]
+`;
+
+exports[`in command when g0ver no any task 1`] = `
+Array [
+  "update task set deleted_at = DATE where user_id = yutin and deleted_at is null and expired_at > DATE",
+  "insert into task (created_at, expired_at, note, updated_at, user_id) values (DATE, DATE, g0ver box, DATE, yutin) returning id",
+]
+`;

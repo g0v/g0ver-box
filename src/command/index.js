@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import XRegExp from 'xregexp';
 import Slack from '../Slack';
 import cmdHelp from './help';
@@ -10,10 +9,11 @@ import cmdDel from './del';
 import cmdWhoami from './whoami';
 import cmdSearch from './search';
 import cmdWhois from './whois';
+import cmdSlogan from './slogan';
 
 const qna = [
   { handler: cmdHelp, regexp: /^help/i },
-  { handler: cmdIn, regexp: new XRegExp('^in (?<task>.+)', 'i') },
+  { handler: cmdIn, regexp: new XRegExp('^in (?<note>.+)', 'i') },
   { handler: cmdOut, regexp: /^out/i },
   { handler: cmdAll, regexp: /^all/i },
   { handler: cmdAdd, regexp: new XRegExp('add (?<skill>[^ ]+)', 'i') },
@@ -21,6 +21,7 @@ const qna = [
   { handler: cmdWhoami, regexp: /^whoami/i },
   { handler: cmdSearch, regexp: new XRegExp('search (?<keyword>[^ ]+)', 'i') },
   { handler: cmdWhois, regexp: new XRegExp('whois (?<name>[^ ]+)', 'i') },
+  { handler: cmdSlogan, regexp: new XRegExp('slogan (?<slogan>.+)', 'i') },
 ];
 
 export default async function (data) {

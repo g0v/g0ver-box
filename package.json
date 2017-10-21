@@ -63,7 +63,7 @@
     "jsonwebtoken": "^7.1.9",
     "knex": "^0.13.0",
     "lodash": "^4.16.4",
-    "moment": "^2.15.1",
+    "moment": "^2.19.1",
     "nodemon": "^1.11.0",
     "pg": "^7.3.0",
     "query-string": "^4.2.3",

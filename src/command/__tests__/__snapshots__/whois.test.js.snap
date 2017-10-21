@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`whois command when g0ver does not exist 1`] = `
+Array [
+  "select * from g0ver where id in (pm5) and deleted_at is null",
+  "select * from task where expired_at > DATE and deleted_at is null and user_id = pm5 limit 1",
+]
+`;
+
+exports[`whois command when g0ver does not exist 2`] = `
+Array [
+  Array [
+    Object {
+      "channel": "D100",
+      "text": "pm5
+目前需要大家協助推坑
+需要大使協助指導登錄技能",
+    },
+  ],
+]
+`;
+
+exports[`whois command when g0ver is existed 1`] = `
+Array [
+  "select * from g0ver where id in (pm5) and deleted_at is null",
+  "select * from task where expired_at > DATE and deleted_at is null and user_id = pm5 limit 1",
+]
+`;
+
+exports[`whois command when g0ver is existed 2`] = `
+Array [
+  Array [
+    Object {
+      "channel": "D100",
+      "text": "pm5
+目前需要大家協助推坑
+已登錄的技能 react, harmonica",
+    },
+  ],
+]
+`;

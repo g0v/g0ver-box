@@ -13,6 +13,7 @@ export default class User extends CacheModel {
   static columns = {
     username: new ValueColumn(),
     skills: new ValueColumn(Object),
+    slogan: new ValueColumn(),
   }
 
   static fromGlobalId(id) {

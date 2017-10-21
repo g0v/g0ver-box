@@ -3,11 +3,41 @@
 exports[`whoami command when g0ver does not exist 1`] = `
 Array [
   "select * from g0ver where id in (yutin) and deleted_at is null",
+  "select * from task where expired_at > DATE and deleted_at is null and user_id = yutin limit 1",
+]
+`;
+
+exports[`whoami command when g0ver does not exist 2`] = `
+Array [
+  Array [
+    Object {
+      "channel": "D100",
+      "text": "yutin
+
+尚未入坑，歡迎尋找 g0v 大使的協助
+請使用 \`add <skill name>\` 新增你的技能",
+    },
+  ],
 ]
 `;
 
 exports[`whoami command when g0ver is existed 1`] = `
 Array [
   "select * from g0ver where id in (yutin) and deleted_at is null",
+  "select * from task where expired_at > DATE and deleted_at is null and user_id = yutin limit 1",
+]
+`;
+
+exports[`whoami command when g0ver is existed 2`] = `
+Array [
+  Array [
+    Object {
+      "channel": "D100",
+      "text": "yutin
+
+尚未入坑，歡迎尋找 g0v 大使的協助
+已登錄的技能 react, video",
+    },
+  ],
 ]
 `;
