@@ -12,7 +12,7 @@ const BOT_NAME = process.env.SLACK_BOT_ID || 'g0ver';
 
 const users = new DataLoader(keys => Promise.all(_.map(keys, async (user) => {
   const reply = await Slack.userInfo({ user });
-  return _.get(reply, 'user.name', null);
+  return _.get(reply, 'user.profile.display_name', _.get(reply, 'user.name', null));
 })));
 
 const server = express();
