@@ -1,13 +1,18 @@
 import _ from 'lodash';
 import express from 'express';
 import expressGraphQL from 'express-graphql';
-import slack, { bot } from './slack';
-import Schema from './src/Schema';
-import command from './src/command';
-import g0ver from './src/bot';
+import DataLoader from 'dataloader';
+import Slack, { bot } from './Slack';
+import Schema from './Schema';
+import command from './command';
 
 const NODE_PORT = process.env.PORT || 8080;
 const BOT_NAME = process.env.SLACK_BOT_ID || 'g0ver';
+
+const users = new DataLoader(keys => Promise.all(_.map(keys, async (user) => {
+  const reply = await Slack.userInfo({ user });
+  return _.get(reply, 'user.name', null);
+})));
 
 const server = express();
 
@@ -28,8 +33,6 @@ server.listen(NODE_PORT, () => console.log(
   `GraphQL Server is now running on http://localhost:${NODE_PORT}`
 ));
 
-const users = new Map();
-
 bot.message(async (data) => {
   const { channel, user, username } = data;
   const text = data.text.replace(new RegExp(` *<@${BOT_NAME}> *`, 'i'), '');
@@ -41,20 +44,9 @@ bot.message(async (data) => {
     (/^C/.test(channel) && (data.text || '').search(`<@${BOT_NAME}>`) > -1)
   )) return;
 
-  let name = users.get(user);
-
   console.log('rtm: ', JSON.stringify(data));
 
-  if (!name) {
-    const infoReply = await slack.userInfo({ user });
-    name = _.get(infoReply, 'user.name');
-  }
+  const name = await users.load(user);
 
-  const argument = /^([^ ]+) (.+)/.exec(text);
-  if (argument && command[argument[1]]) {
-    command[argument[1]]({ argument: argument[2], ...data });
-    return;
-  }
-
-  g0ver({ ...data, name, text });
+  command({ ...data, name, text });
 });

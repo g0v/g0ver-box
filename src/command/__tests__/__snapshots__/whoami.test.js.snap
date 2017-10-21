@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`whoami command when g0ver does not exist 1`] = `
+Array [
+  "select * from g0ver where id in (yutin) and deleted_at is null",
+]
+`;
+
+exports[`whoami command when g0ver is existed 1`] = `
+Array [
+  "select * from g0ver where id in (yutin) and deleted_at is null",
+]
+`;

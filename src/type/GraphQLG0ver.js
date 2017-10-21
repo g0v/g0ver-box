@@ -1,5 +1,4 @@
 import { GraphQLObjectType, GraphQLList, GraphQLString } from 'graphql';
-import ProjectQuery from '../query/ProjectQuery';
 import GraphQLPrimary from './GraphQLPrimary';
 
 export default new GraphQLObjectType({
@@ -7,7 +6,6 @@ export default new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLPrimary },
     username: { type: GraphQLString },
-    skill: { type: new GraphQLList(GraphQLString) },
-    project: ProjectQuery,
+    skills: { type: new GraphQLList(GraphQLString) },
   }),
 });

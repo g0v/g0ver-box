@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search command when g0ver is existed 1`] = `
+Array [
+  "select *, ts_rank(keyword, react) as rank from g0ver where keyword @@ to_tsquery(react) and deleted_at is null order by rank desc limit 1000",
+]
+`;
+
+exports[`search command when g0ver not find 1`] = `
+Array [
+  "select *, ts_rank(keyword, react) as rank from g0ver where keyword @@ to_tsquery(react) and deleted_at is null order by rank desc limit 1000",
+]
+`;
