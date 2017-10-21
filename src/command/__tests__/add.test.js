@@ -20,4 +20,11 @@ describe('add command', () => {
     expect(client).toMatchSnapshot();
     expect(Slack.postMessage).toHaveBeenLastCalledWith({ channel: 'D100', text: 'done it, add video.' });
   });
+
+  it('when g0ver skill is existed', async () => {
+    client.mockReturnValueOnce([]);
+    await index({ ...data, text: 'add video' });
+    expect(client).toMatchSnapshot();
+    expect(Slack.postMessage).toHaveBeenLastCalledWith({ channel: 'D100', text: 'done it, add video.' });
+  });
 });

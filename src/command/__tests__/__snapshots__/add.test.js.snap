@@ -13,3 +13,5 @@ Array [
   "update g0ver set keyword = react video, skills = [react,video], updated_at = DATE where deleted_at is null and id = yutin",
 ]
 `;
+
+exports[`add command when g0ver skill is existed 1`] = `Array []`;

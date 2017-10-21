@@ -5,7 +5,7 @@ export default async function ({ keyword }) {
   if (!keyword) return null;
 
   const g0ver = new G0ver();
-  g0ver.search(keyword);
+  g0ver.search(_.toLower(keyword));
   const ids = _.map(await g0ver.fetchAll(), ({ nativeId }) => `@${nativeId}`);
 
   if (_.size(ids) < 1) {

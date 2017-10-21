@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { isGlobalId, fromGlobalId, toGlobalId } from 'graphql-tower';
 import CacheModel, { ValueColumn } from 'cache-model';
 import db from './Database';
@@ -23,7 +24,7 @@ export default class User extends CacheModel {
   }
 
   static toKeyword({ skills }) {
-    return (skills || []).join(' ');
+    return _.toLower((skills || []).join(' '));
   }
 
   type = GraphQLG0ver;
