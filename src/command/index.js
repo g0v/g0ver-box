@@ -12,14 +12,13 @@ import cmdWhois from './whois';
 import cmdSlogan from './slogan';
 
 const qna = [
-  { handler: cmdHelp, regexp: /^help/i },
   { handler: cmdIn, regexp: new XRegExp('^in (?<note>.+)', 'i') },
   { handler: cmdOut, regexp: /^out/i },
   { handler: cmdAll, regexp: /^all/i },
-  { handler: cmdAdd, regexp: new XRegExp('add (?<skill>[^ ]+)', 'i') },
-  { handler: cmdDel, regexp: new XRegExp('del (?<skill>[^ ]+)', 'i') },
+  { handler: cmdAdd, regexp: new XRegExp('add (?<hashtag>.+)', 'i') },
+  { handler: cmdDel, regexp: new XRegExp('del (?<hashtag>.+)', 'i') },
   { handler: cmdWhoami, regexp: /^whoami/i },
-  { handler: cmdSearch, regexp: new XRegExp('search (?<keyword>[^ ]+)', 'i') },
+  { handler: cmdSearch, regexp: new XRegExp('search (?<keyword>.+)', 'i') },
   { handler: cmdWhois, regexp: new XRegExp('whois <@(?<user>[^>]+)>', 'i') },
   { handler: cmdSlogan, regexp: new XRegExp('slogan (?<slogan>.+)', 'i') },
 ];
@@ -38,7 +37,7 @@ export default async function (data) {
   } while (!answer && index < qna.length);
 
   if (!answer) {
-    Slack.postMessage({ channel, text: await cmdHelp() });
+    Slack.postMessage({ channel, ...(await cmdHelp()) });
     return;
   }
 

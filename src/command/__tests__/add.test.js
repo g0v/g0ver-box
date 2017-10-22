@@ -23,8 +23,8 @@ describe('add command', () => {
 
   it('when g0ver skill is existed', async () => {
     client.mockReturnValueOnce([]);
-    await index({ ...data, text: 'add video' });
+    await index({ ...data, text: 'add video, rails' });
     expect(client).toMatchSnapshot();
-    expect(Slack.postMessage).toHaveBeenLastCalledWith({ channel: 'D100', text: 'done it, add video.' });
+    expect(Slack.postMessage).toHaveBeenLastCalledWith({ channel: 'D100', text: 'done it, add video, rails.' });
   });
 });
