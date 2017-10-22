@@ -3,11 +3,11 @@ import Slack from '../../Slack';
 import index from '../';
 
 describe('add command', () => {
-  const data = { channel: 'D100', name: 'yutin', text: 'slogan are you freestyle' };
+  const data = { channel: 'D100', user: 'U03B2AB13', name: 'yutin', text: 'slogan are you freestyle' };
 
   it('when g0ver does not exist', async () => {
     client.mockReturnValueOnce([]);
-    client.mockReturnValueOnce(['yutin']);
+    client.mockReturnValueOnce(['U03B2AB13']);
     client.mockReturnValueOnce([]);
     await index(data);
     expect(client).toMatchSnapshot();

@@ -2,14 +2,14 @@
 
 exports[`in command when g0ver have setting expired 1`] = `
 Array [
-  "update task set deleted_at = DATE where user_id = yutin and deleted_at is null and expired_at > DATE",
-  "insert into task (created_at, expired_at, note, updated_at, user_id) values (DATE, DATE, g0ver box, DATE, yutin) returning id",
+  "update task set deleted_at = DATE where user_id = U03B2AB13 and deleted_at is null and expired_at > DATE",
+  "insert into task (created_at, expired_at, note, updated_at, user_id) values (DATE, DATE, g0ver box, DATE, U03B2AB13) returning id",
 ]
 `;
 
 exports[`in command when g0ver no any task 1`] = `
 Array [
-  "update task set deleted_at = DATE where user_id = yutin and deleted_at is null and expired_at > DATE",
-  "insert into task (created_at, expired_at, note, updated_at, user_id) values (DATE, DATE, g0ver box, DATE, yutin) returning id",
+  "update task set deleted_at = DATE where user_id = U03B2AB13 and deleted_at is null and expired_at > DATE",
+  "insert into task (created_at, expired_at, note, updated_at, user_id) values (DATE, DATE, g0ver box, DATE, U03B2AB13) returning id",
 ]
 `;

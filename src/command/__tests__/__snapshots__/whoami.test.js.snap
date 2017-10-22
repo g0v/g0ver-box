@@ -2,8 +2,8 @@
 
 exports[`whoami command when g0ver does not exist 1`] = `
 Array [
-  "select * from g0ver where id in (yutin) and deleted_at is null",
-  "select * from task where expired_at > DATE and deleted_at is null and user_id = yutin limit 1",
+  "select * from g0ver where id in (U03B2AB13) and deleted_at is null",
+  "select * from task where expired_at > DATE and deleted_at is null and user_id = U03B2AB13 limit 1",
 ]
 `;
 
@@ -23,8 +23,8 @@ Array [
 
 exports[`whoami command when g0ver is existed 1`] = `
 Array [
-  "select * from g0ver where id in (yutin) and deleted_at is null",
-  "select * from task where expired_at > DATE and deleted_at is null and user_id = yutin limit 1",
+  "select * from g0ver where id in (U03B2AB13) and deleted_at is null",
+  "select * from task where expired_at > DATE and deleted_at is null and user_id = U03B2AB13 limit 1",
 ]
 `;
 

@@ -3,7 +3,7 @@ import Slack from '../../Slack';
 import index from '../';
 
 describe('search command', () => {
-  const data = { channel: 'D100', name: 'yutin', text: 'search react' };
+  const data = { channel: 'D100', user: 'U03B2AB13', name: 'yutin', text: 'search react' };
 
   it('when g0ver not find', async () => {
     client.mockReturnValueOnce([]);
@@ -14,11 +14,11 @@ describe('search command', () => {
 
   it('when g0ver is existed', async () => {
     client.mockReturnValueOnce([
-      { id: 'yutin', skills: ['react', 'video'] },
-      { id: 'pm5', skills: ['react', 'math'] },
+      { id: 'U03B2AB13', skills: ['react', 'video'] },
+      { id: 'U0RQYV16K', skills: ['react', 'math'] },
     ]);
     await index(data);
     expect(client).toMatchSnapshot();
-    expect(Slack.postMessage).toHaveBeenLastCalledWith({ channel: 'D100', text: '搜尋 react 找到了這些 g0ver: @yutin, @pm5.' });
+    expect(Slack.postMessage).toHaveBeenLastCalledWith({ channel: 'D100', text: '搜尋 react 找到了這些 g0ver: <@U03B2AB13>, <@U0RQYV16K>.' });
   });
 });

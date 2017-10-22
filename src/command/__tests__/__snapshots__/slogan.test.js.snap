@@ -2,9 +2,14 @@
 
 exports[`add command when g0ver does not exist 1`] = `
 Array [
-  "select * from g0ver where id in (yutin) and deleted_at is null",
-  "insert into g0ver (created_at, id, keyword, updated_at) values (DATE, yutin, , DATE) returning id",
+  "select * from g0ver where id in (U03B2AB13) and deleted_at is null",
+  "insert into g0ver (created_at, id, keyword, updated_at) values (DATE, U03B2AB13, , DATE) returning id",
+  "update g0ver set keyword = , slogan = are you freestyle, updated_at = DATE where deleted_at is null and id = U03B2AB13",
 ]
 `;
 
-exports[`add command when g0ver is existed 1`] = `Array []`;
+exports[`add command when g0ver is existed 1`] = `
+Array [
+  "update g0ver set keyword = , slogan = 你就是沒有人, updated_at = DATE where deleted_at is null and id = U03B2AB13",
+]
+`;

@@ -1,7 +1,7 @@
 import Task from '../model/Task';
 
-export default async function ({ note }, { name }) {
-  const task = new Task({ user: name });
+export default async function ({ note }, { user, name }) {
+  const task = new Task({ user });
   if (!await task.where('expired_at', '>', new Date()).fetch()) {
     return `${name} 目前沒有入坑`;
   }

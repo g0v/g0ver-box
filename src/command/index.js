@@ -20,7 +20,7 @@ const qna = [
   { handler: cmdDel, regexp: new XRegExp('del (?<skill>[^ ]+)', 'i') },
   { handler: cmdWhoami, regexp: /^whoami/i },
   { handler: cmdSearch, regexp: new XRegExp('search (?<keyword>[^ ]+)', 'i') },
-  { handler: cmdWhois, regexp: new XRegExp('whois (?<name>[^ ]+)', 'i') },
+  { handler: cmdWhois, regexp: new XRegExp('whois <@(?<user>[^>]+)>', 'i') },
   { handler: cmdSlogan, regexp: new XRegExp('slogan (?<slogan>.+)', 'i') },
 ];
 

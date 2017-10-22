@@ -3,7 +3,7 @@ import Slack from '../../Slack';
 import index from '../';
 
 describe('in command', () => {
-  const data = { channel: 'D100', name: 'yutin', text: 'in g0ver box' };
+  const data = { channel: 'D100', user: 'U03B2AB13', name: 'yutin', text: 'in g0ver box' };
 
   it('when g0ver no any task', async () => {
     client.mockReturnValueOnce([]);

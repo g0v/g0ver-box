@@ -8,7 +8,7 @@ export default async function () {
 \`del <skill name>\` 刪除技能
 \`whoami\` 查詢自己有哪些技能
 \`search <skill name>\` 搜尋哪些 g0ver 會此技能
-\`whois <slack id>\` 查詢此 g0ver 有哪些技能
+\`whois <@username>\` 查詢此 g0ver 有哪些技能 (ex. whois @yutin)
 \`slogan <text>\` 設定座右銘
   `;
 }

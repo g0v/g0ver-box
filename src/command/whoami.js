@@ -1,10 +1,10 @@
 import G0ver from '../model/G0ver';
 import Task from '../model/Task';
 
-export default async function (match, { name }) {
-  const g0ver = await G0ver.load(name);
+export default async function (match, { user, name }) {
+  const g0ver = await G0ver.load(user);
 
-  const task = new Task({ user: name });
+  const task = new Task({ user });
   await task.where('expired_at', '>', new Date()).fetch();
 
   const reply = ((g0ver && g0ver.skills) || []).join(', ');
