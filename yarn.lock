@@ -753,7 +753,7 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
-base-x@^3.0.0:
+base-x@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/base-x/-/base-x-3.0.2.tgz#bf873861b7514279b7969f340929eab87c11d130"
   dependencies:
@@ -769,7 +769,7 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-bignumber.js@^4.0.2:
+bignumber.js@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-4.1.0.tgz#db6f14067c140bd46624815a7916c92d9b6c24b1"
 
@@ -839,13 +839,6 @@ builtin-modules@^1.0.0, builtin-modules@^1.1.1:
 bytes@2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-2.4.0.tgz#7d97196f9d5baf7f6935e25985549edd2a6c2339"
-
-cache-model@^1.9.4:
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/cache-model/-/cache-model-1.9.4.tgz#5f8ce8e1e4186f08042745be9ee03b1493a8e195"
-  dependencies:
-    dataloader "^1.3.0"
-    lodash "^4.17.4"
 
 caller-path@^0.1.0:
   version "0.1.0"
@@ -1931,14 +1924,74 @@ graphql-relay@^0.4.3:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/graphql-relay/-/graphql-relay-0.4.4.tgz#876a654445b6af4539f81cb9befd5cd7ead129dd"
 
-graphql-tower@^2.17.3:
-  version "2.17.3"
-  resolved "https://registry.yarnpkg.com/graphql-tower/-/graphql-tower-2.17.3.tgz#9a7b489680ed7dd33ebb9e7b7f963ea6be698dda"
+graphql-tower-cache@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/graphql-tower-cache/-/graphql-tower-cache-3.5.0.tgz#23b6f8c3e6f551a86a94ec45ed7d7d167b9d1cef"
   dependencies:
-    base-x "^3.0.0"
-    bignumber.js "^4.0.2"
+    dataloader "^1.3.0"
+    graphql-tower-global-id "^3.3.3"
+
+graphql-tower-errors@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/graphql-tower-errors/-/graphql-tower-errors-3.0.0.tgz#1b9caade14dfed12ac37bfc5a44287100a07347e"
+
+graphql-tower-global-id@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/graphql-tower-global-id/-/graphql-tower-global-id-3.3.3.tgz#5741ce5561dc1075264c2c905da617eca96e7884"
+  dependencies:
+    base-x "^3.0.2"
+    bignumber.js "^4.1.0"
     lodash "^4.17.4"
-    moment "^2.18.1"
+
+graphql-tower-middleware@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/graphql-tower-middleware/-/graphql-tower-middleware-3.3.0.tgz#b1fb58d8398c76654be6bbf3f7bc5a4b439db43d"
+  dependencies:
+    graphql-tower-errors "^3.0.0"
+    lodash "^4.17.4"
+
+graphql-tower-model@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/graphql-tower-model/-/graphql-tower-model-3.5.0.tgz#42b6fe10d03bd245d53ecb52bd777a12b0de7f83"
+  dependencies:
+    dataloader "^1.3.0"
+    graphql-tower-global-id "^3.3.3"
+    lodash "^4.17.4"
+
+graphql-tower-queries@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/graphql-tower-queries/-/graphql-tower-queries-3.1.0.tgz#0fefa5dd7fbef613e8ba91a819d441dbfcc8d886"
+  dependencies:
+    lodash "^4.17.4"
+
+graphql-tower-types@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/graphql-tower-types/-/graphql-tower-types-3.3.3.tgz#7f56eb0d28e4fe37197fb35b31e64ce294a67349"
+  dependencies:
+    graphql-tower-global-id "^3.3.3"
+    lodash "^4.17.4"
+    moment "^2.19.1"
+
+graphql-tower-unigue@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/graphql-tower-unigue/-/graphql-tower-unigue-3.0.0.tgz#4f8b86afdc96d40590d782bb279c1be11c137ef6"
+  dependencies:
+    base-x "^3.0.2"
+    lodash "^4.17.4"
+    os "^0.1.1"
+
+graphql-tower@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/graphql-tower/-/graphql-tower-3.5.0.tgz#9313b19771ac848e89e1e2ce6f04c70ee06d201e"
+  dependencies:
+    graphql-tower-cache "^3.5.0"
+    graphql-tower-errors "^3.0.0"
+    graphql-tower-global-id "^3.3.3"
+    graphql-tower-middleware "^3.3.0"
+    graphql-tower-model "^3.5.0"
+    graphql-tower-queries "^3.1.0"
+    graphql-tower-types "^3.3.3"
+    graphql-tower-unigue "^3.0.0"
 
 graphql@^0.7.1:
   version "0.7.2"
@@ -3074,7 +3127,7 @@ minimist@^1.2.0:
   dependencies:
     minimist "0.0.8"
 
-moment@2.x.x, moment@^2.18.1, moment@^2.19.1:
+moment@2.x.x, moment@^2.19.1:
   version "2.19.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.1.tgz#56da1a2d1cbf01d38b7e1afc31c10bcfa1929167"
 
@@ -3306,6 +3359,10 @@ os-locale@^2.0.0:
 os-tmpdir@^1.0.0, os-tmpdir@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
+
+os@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/os/-/os-0.1.1.tgz#208845e89e193ad4d971474b93947736a56d13f3"
 
 osenv@^0.1.0, osenv@^0.1.4:
   version "0.1.4"

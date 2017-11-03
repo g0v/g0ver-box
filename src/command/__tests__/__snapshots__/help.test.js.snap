@@ -13,11 +13,21 @@ Array [
             "fields",
           ],
           "text": "*關鍵字 技能 議題*
-\`add\`, \`del\`, \`whois\`, \`whoami\`, \`search\`
+\`add\`, \`del\`, \`whoami\`
 \`add <hashtag>\` 新增關鍵字，逗號可以多筆 ( ex. add A, B )
 \`del <hashtag>\` 刪除關鍵字，逗號可以多筆 ( ex. del A, B )
+\`whoami\` 查詢 自己 登錄了哪些關鍵字",
+        },
+        Object {
+          "color": "#000",
+          "mrkdwn_in": Array [
+            "text",
+            "pretext",
+            "fields",
+          ],
+          "text": "*推坑 找人*
+\`whois\`, \`search\`
 \`whois <@username>\` 查詢 g0ver 登錄了哪些關鍵字 ( ex. whois @yutin )
-\`whoami\` 查詢 自己 登錄了哪些關鍵字
 \`search <hashtag>\` *搜尋哪些 g0ver 有此關鍵字*",
         },
         Object {
@@ -29,7 +39,7 @@ Array [
           ],
           "text": "*入坑 出坑*
 \`in\`, \`all\`, \`out\`
-\`in <project / task> <hours>\` 進入某個坑裡，hours ( 選填 ) 預計幾小時後出坑，預設 24 hr 後出坑
+\`in <project / task> <hours>\` 進入某個坑裡，hours ( 選填 ) 預計幾小時後出坑
 \`out\` 離開某個坑
 \`all\` 顯示 g0ver 正在哪些坑，也許他們需要你的加入",
         },

@@ -15,6 +15,7 @@ describe('add command', () => {
   });
 
   it('when g0ver is existed', async () => {
+    client.mockReturnValueOnce([{ id: 'U03B2AB13' }]);
     client.mockReturnValueOnce([]);
     await index({ ...data, text: 'slogan 你就是沒有人' });
     expect(client).toMatchSnapshot();

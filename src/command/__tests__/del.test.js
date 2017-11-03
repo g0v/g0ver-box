@@ -15,6 +15,7 @@ describe('del command', () => {
   });
 
   it('when g0ver is existed', async () => {
+    client.mockReturnValueOnce([{ id: 'U03B2AB13', skills: [] }]);
     client.mockReturnValueOnce([]);
     await index({ ...data, text: 'del video' });
     expect(client).toMatchSnapshot();

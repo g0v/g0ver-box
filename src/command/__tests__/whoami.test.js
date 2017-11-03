@@ -1,6 +1,5 @@
 import { client } from 'knex';
 import Slack from '../../Slack';
-import G0ver from '../../model/G0ver';
 import index from '../';
 
 describe('whoami command', () => {
@@ -15,7 +14,6 @@ describe('whoami command', () => {
   });
 
   it('when g0ver is existed', async () => {
-    G0ver.prime('U03B2AB13');
     client.mockReturnValueOnce([{ id: 'U03B2AB13', skills: ['react', 'video'] }]);
     client.mockReturnValueOnce([]);
     await index(data);

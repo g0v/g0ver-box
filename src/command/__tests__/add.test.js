@@ -15,6 +15,7 @@ describe('add command', () => {
   });
 
   it('when g0ver is existed', async () => {
+    client.mockReturnValueOnce([{ id: 'U03B2AB13' }]);
     client.mockReturnValueOnce([]);
     await index({ ...data, text: 'add video' });
     expect(client).toMatchSnapshot();
@@ -22,6 +23,7 @@ describe('add command', () => {
   });
 
   it('when g0ver skill is existed', async () => {
+    client.mockReturnValueOnce([{ id: 'U03B2AB13', skills: ['video'] }]);
     client.mockReturnValueOnce([]);
     await index({ ...data, text: 'add video, rails' });
     expect(client).toMatchSnapshot();

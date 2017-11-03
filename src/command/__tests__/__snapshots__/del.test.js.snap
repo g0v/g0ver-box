@@ -8,4 +8,8 @@ Array [
 ]
 `;
 
-exports[`del command when g0ver is existed 1`] = `Array []`;
+exports[`del command when g0ver is existed 1`] = `
+Array [
+  "select * from g0ver where id in (U03B2AB13) and deleted_at is null",
+]
+`;
