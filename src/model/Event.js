@@ -12,7 +12,10 @@ export default class Event extends Model {
     url: new ArchiveColumn(),
   })
 
-  static whereBefore() {
-    this.query.where('datetime', '>', this.database.raw('NOW()'));
+  whereBefore() {
+    const { database } = this.constructor;
+    this.where('datetime', '>', database.raw('NOW()'));
+    this.orderBy('datetime');
+    return this;
   }
 }

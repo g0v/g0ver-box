@@ -27,7 +27,7 @@ Array [
 
 exports[`projects command successful query 1`] = `
 Array [
-  "select * from event where deleted_at is null limit 1000",
+  "select * from event where datetime > NOW() and deleted_at is null order by datetime asc limit 1000",
 ]
 `;
 

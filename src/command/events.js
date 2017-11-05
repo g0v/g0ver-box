@@ -3,7 +3,7 @@ import Event from '../model/Event';
 
 export default async function () {
   const query = new Event();
-  const events = await query.fetchAll();
+  const events = await query.whereBefore().fetchAll();
   return {
     text: '下列活動歡迎你的參加：',
     attachments: _.map(events, event => ({
