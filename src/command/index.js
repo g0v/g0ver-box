@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import XRegExp from 'xregexp';
-import Slack from '../Slack';
+import Slack, { bot } from '../Slack';
 import Interaction from '../model/Interaction';
 import cmdHelp from './help';
 import cmdIn from './in';
