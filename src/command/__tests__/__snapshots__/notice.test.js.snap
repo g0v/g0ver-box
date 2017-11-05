@@ -1,5 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`notice command database follow 1`] = `
+Array [
+  "select * from event where follower_ids <> [U03B2AB13] and datetime > NOW() and deleted_at is null order by datetime asc limit 1000",
+  "select * from project where follower_ids <> [U03B2AB13] and deleted_at is null limit 1000",
+  "update project set follower_ids = array_append(array_remove(follower_ids, U03B2AB13), U03B2AB13) where deleted_at is null and id = 1",
+]
+`;
+
+exports[`notice command database notice 1`] = `
+Array [
+  "select * from event where datetime > NOW() and deleted_at is null and user_id = U03B2AB13 order by datetime asc limit 1000",
+  "select * from project where deleted_at is null and user_id = U03B2AB13 limit 1000",
+]
+`;
+
+exports[`notice command database unfollow 1`] = `
+Array [
+  "select * from event where follower_ids @> [U03B2AB13] and datetime > NOW() and deleted_at is null order by datetime asc limit 1000",
+  "select * from project where follower_ids @> [U03B2AB13] and deleted_at is null limit 1000",
+  "update project set follower_ids = array_remove(follower_ids, U03B2AB13) where deleted_at is null and id = 1",
+]
+`;
+
 exports[`notice command notice <message> successfully notice when has event 1`] = `
 Array [
   "select * from event where datetime > NOW() and deleted_at is null and user_id = U03B2AB13 order by datetime asc limit 1000",

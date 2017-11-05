@@ -1,5 +1,18 @@
+/* eslint import/imports-first: 0 */
+
+jest.mock('../../../knexfile', () => ({
+  client: 'pg',
+  connection: {
+    host: '127.0.0.1',
+    user: 'postgres',
+    password: null,
+    database: 'g0ver_notice',
+  },
+}));
+
 import { client } from 'knex';
 import Slack from '../../Slack';
+import db from '../../model/Database';
 import index from '../';
 
 describe('notice command', () => {
@@ -120,5 +133,77 @@ describe('notice command', () => {
 
     expect(client).toMatchSnapshot();
     expect(client).toHaveBeenCalledTimes(2);
+  });
+
+  describe('database', () => {
+    const data = { channel: 'D100', user: 'U03B2AB13', name: 'yutin' };
+
+    beforeAll(async () => {
+      await db('pg_tables').select('tablename').where('schemaname', 'public').map(({ tablename }) => (
+        db.schema.dropTable(tablename)
+      ));
+      await db.migrate.latest();
+      await index({ ...data, text: 'create g0ver box' });
+      await index({ ...data, text: 'skip' });
+      await index({ ...data, text: 'skip' });
+      await index({ ...data, text: 'skip' });
+      await index({ ...data, text: 'yes' });
+    });
+
+    afterAll(async () => {
+      await db.destroy();
+    });
+
+    it('follow', async () => {
+      await index({ ...data, text: 'follow' });
+      await index({ ...data, text: '1' });
+      expect(client).toMatchSnapshot();
+      expect(client).toHaveBeenCalledTimes(3);
+      expect(Slack.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({
+        channel: 'D100',
+        text: 'Done, 追蹤 g0ver box 專案',
+      }));
+
+      await index({ ...data, text: 'follow' });
+      expect(Slack.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({
+        channel: 'D100',
+        text: 'Sorry! 找不到未追蹤的專案或活動',
+      }));
+    });
+
+    it('notice', async () => {
+      await index({ ...data, text: 'notice 將於週末更新系統' });
+      await index({ ...data, text: '1' });
+      await index({ ...data, text: 'yes' });
+      expect(client).toMatchSnapshot();
+      expect(client).toHaveBeenCalledTimes(2);
+      expect(Slack.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({
+        channel: 'D100',
+        text: 'Done, 發送 g0ver box 專案通知',
+      }));
+
+      await index({ ...data, text: 'follow' });
+      expect(Slack.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({
+        channel: 'D100',
+        text: 'Sorry! 找不到未追蹤的專案或活動',
+      }));
+    });
+
+    it('unfollow', async () => {
+      await index({ ...data, text: 'unfollow' });
+      await index({ ...data, text: '1' });
+      expect(client).toMatchSnapshot();
+      expect(client).toHaveBeenCalledTimes(3);
+      expect(Slack.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({
+        channel: 'D100',
+        text: 'Done, 取消追蹤 g0ver box 專案',
+      }));
+
+      await index({ ...data, text: 'unfollow' });
+      expect(Slack.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({
+        channel: 'D100',
+        text: 'Sorry! 找不到已追蹤的專案或活動',
+      }));
+    });
   });
 });
