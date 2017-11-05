@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`notice command notice <message> successfully notice when has event 1`] = `
+Array [
+  "select * from event where datetime > NOW() and deleted_at is null and user_id = U03B2AB13 order by datetime asc limit 1000",
+  "select * from project where deleted_at is null and user_id = U03B2AB13 limit 1000",
+]
+`;
+
+exports[`notice command notice <message> successfully notice when has project 1`] = `
+Array [
+  "select * from event where datetime > NOW() and deleted_at is null and user_id = U03B2AB13 order by datetime asc limit 1000",
+  "select * from project where deleted_at is null and user_id = U03B2AB13 limit 1000",
+]
+`;
+
+exports[`notice command notice <message> when project and event does not exist 1`] = `
+Array [
+  "select * from event where datetime > NOW() and deleted_at is null and user_id = U03B2AB13 order by datetime asc limit 1000",
+  "select * from project where deleted_at is null and user_id = U03B2AB13 limit 1000",
+]
+`;
+
+exports[`notice command notie [message] 1`] = `
+Array [
+  "select * from event where datetime > NOW() and deleted_at is null and user_id = U03B2AB13 order by datetime asc limit 1000",
+  "select * from project where deleted_at is null and user_id = U03B2AB13 limit 1000",
+]
+`;

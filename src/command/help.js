@@ -49,9 +49,16 @@ export default async function () {
         '`jothon <title>` 揪松， title 為活動名稱',
         '`cancel [title]` 取消活動， title ( 選填 ) 為活動名稱',
         '`events` 列出即將到來的大松小松',
-        '`follow [title]` *ToDo* 追蹤指定的松， title ( 選填 ) 為活動名稱',
-        '`unfollow [title]` *ToDo* 取消追蹤， title ( 選填 ) 為活動名稱',
-        '`notice <message>` *ToDo* 發訊息通知關注者， message 為訊息內容',
+      ].join('\n'),
+    }, {
+      color: '#000',
+      mrkdwn_in: ['text', 'pretext', 'fields'],
+      text: [
+        '*追蹤專案 追蹤活動*',
+        '`follow`, `unfollow`',
+        '`follow [title]` 追蹤， title ( 選填 ) 為專案或活動名稱',
+        '`unfollow [title]` 取消追蹤， title ( 選填 ) 為專案或活動名稱',
+        '`notice <message>` 發訊息通知關注者， message 為訊息內容',
       ].join('\n'),
     }, {
       color: '#000',

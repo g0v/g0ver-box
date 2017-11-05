@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`unfollow command unfollow <title> successfully unfollow when has event 1`] = `
+Array [
+  "select * from event where datetime > NOW() and deleted_at is null and title = g0ver box order by datetime asc limit 1",
+  "update event set follower_ids = array_remove(follower_ids, U03B2AB13) where deleted_at is null and id = 5",
+]
+`;
+
+exports[`unfollow command unfollow <title> successfully unfollow when has project 1`] = `
+Array [
+  "select * from event where datetime > NOW() and deleted_at is null and title = g0ver box order by datetime asc limit 1",
+  "select * from project where deleted_at is null and title = g0ver box limit 1",
+  "update project set follower_ids = array_remove(follower_ids, U03B2AB13) where deleted_at is null and id = 5",
+]
+`;
+
+exports[`unfollow command unfollow <title> when project and event does not exist 1`] = `
+Array [
+  "select * from event where datetime > NOW() and deleted_at is null and title = g0ver box order by datetime asc limit 1",
+  "select * from project where deleted_at is null and title = g0ver box limit 1",
+]
+`;
+
+exports[`unfollow command unfollow [title] when project and event does not exist 1`] = `
+Array [
+  "select * from event where follower_ids @> [U03B2AB13] and datetime > NOW() and deleted_at is null order by datetime asc limit 1000",
+  "select * from project where follower_ids @> [U03B2AB13] and deleted_at is null limit 1000",
+]
+`;
+
+exports[`unfollow command unfollow [title] when project or event is existed successfully unfollow events 1`] = `
+Array [
+  "select * from event where follower_ids @> [U03B2AB13] and datetime > NOW() and deleted_at is null order by datetime asc limit 1000",
+  "select * from project where follower_ids @> [U03B2AB13] and deleted_at is null limit 1000",
+  "update project set follower_ids = array_remove(follower_ids, U03B2AB13) where deleted_at is null and id = 5",
+]
+`;
+
+exports[`unfollow command unfollow [title] when project or event is existed successfully unfollow project 1`] = `
+Array [
+  "select * from event where follower_ids @> [U03B2AB13] and datetime > NOW() and deleted_at is null order by datetime asc limit 1000",
+  "select * from project where follower_ids @> [U03B2AB13] and deleted_at is null limit 1000",
+  "update event set follower_ids = array_remove(follower_ids, U03B2AB13) where deleted_at is null and id = 5",
+]
+`;

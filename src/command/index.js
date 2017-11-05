@@ -14,11 +14,13 @@ import cmdProjects from './projects';
 import cmdJothon from './jothon';
 import cmdCancel from './cancel';
 import cmdEvents from './events';
+import cmdFollow from './follow';
+import cmdUnfollow from './unfollow';
+import cmdNotice from './notice';
 import cmdWhoami from './whoami';
 import cmdSearch from './search';
 import cmdWhois from './whois';
 import cmdSlogan from './slogan';
-
 
 const qna = [
   { handler: cmdIn, regexp: new XRegExp('^in(?<value>.*)', 'i') },
@@ -29,12 +31,12 @@ const qna = [
   { handler: cmdCreate, regexp: new XRegExp('^create (?<title>.+)', 'i') },
   { handler: cmdRemove, regexp: new XRegExp('remove(?<value>.*)', 'i') },
   { handler: cmdProjects, regexp: /^projects/i },
-  { handler: cmdJothon, regexp: new XRegExp('jothon (?<title>.+)', 'i') },
-  { handler: cmdCancel, regexp: new XRegExp('cancel(?<value>.*)', 'i') },
+  { handler: cmdJothon, regexp: new XRegExp('^jothon (?<title>.+)', 'i') },
+  { handler: cmdCancel, regexp: new XRegExp('^cancel(?<value>.*)', 'i') },
   { handler: cmdEvents, regexp: /^events/i },
-  // { handler: cmdNotice, regexp: new XRegExp('notice (?<name>.+)', 'i') },
-  // { handler: cmdFollow, regexp: new XRegExp('follow (?<name>.+)', 'i') },
-  // { handler: cmdUnfollow, regexp: new XRegExp('unfollow (?<name>.+)', 'i') },
+  { handler: cmdFollow, regexp: new XRegExp('^follow(?<value>.*)', 'i') },
+  { handler: cmdUnfollow, regexp: new XRegExp('^unfollow(?<value>.*)', 'i') },
+  { handler: cmdNotice, regexp: new XRegExp('^notice(?<value>.*)', 'i') },
   { handler: cmdWhoami, regexp: /^whoami/i },
   { handler: cmdSearch, regexp: new XRegExp('^search (?<keyword>.+)', 'i') },
   { handler: cmdWhois, regexp: new XRegExp('^whois <@(?<user>[^>]+)>', 'i') },

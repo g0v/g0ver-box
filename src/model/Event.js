@@ -1,4 +1,4 @@
-import { ValueColumn, ArchiveColumn, DateTimeColumn } from 'graphql-tower';
+import { ValueColumn, ArchiveColumn, DateTimeColumn, ListColumn } from 'graphql-tower';
 import { Model } from './Database';
 
 export default class Event extends Model {
@@ -10,6 +10,7 @@ export default class Event extends Model {
     title: new ValueColumn(),
     datetime: new DateTimeColumn(),
     url: new ArchiveColumn(),
+    follower: new ListColumn(String, 'followerIds'),
   })
 
   whereBefore() {
@@ -17,5 +18,13 @@ export default class Event extends Model {
     this.where('datetime', '>', database.raw('NOW()'));
     this.orderBy('datetime');
     return this;
+  }
+
+  whereFollowed(user) {
+    return this.whereRaw('follower_ids @> ?', [[user]]);
+  }
+
+  whereUnfollowed(user) {
+    return this.whereRaw('follower_ids <> ?', [[user]]);
   }
 }

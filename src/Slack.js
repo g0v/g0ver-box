@@ -26,6 +26,9 @@ const call = (name, req = {}) => (
 export default {
   userInfo: async req => await call('users.info', req),
   postMessage: async req => await call('chat.postMessage', { ...req, as_user: true }),
+  postMultiMessage: async (users, message) => _.map(users, user => bot.push({
+    id: `${user}::${Date.now()}`, type: 'message', channel: user, text: message,
+  })),
   channelInfo: async req => await call('channels.info', req),
   channelJoin: async req => await call('channels.join', req),
 };
