@@ -60,6 +60,7 @@ describe('projects command', () => {
       await index({ ...data, text: 'https://project.g0v.tw/' });
       await index({ ...data, text: '找人 找坑' });
       await index({ ...data, text: 'https://project.g0v.tw/index.png' });
+      await index({ ...data, text: 'yes' });
       expect(Slack.postMessage).toHaveBeenLastCalledWith({
         channel: 'D100',
         text: 'Done, create g0ver-box',

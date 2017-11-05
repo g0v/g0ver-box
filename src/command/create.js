@@ -13,13 +13,34 @@ async function saveProject(user, inputs) {
   }
 }
 
+function confirm(user, inputs) {
+  Interaction.set(user, ({ text }) => {
+    const check = _.trim(text);
+    if (!(check === 'yes')) return '無法判斷的指令';
+
+    return saveProject(user, inputs);
+  });
+
+  return {
+    text: '請確認資料如下？（輸入 yes 完成建立）\n`（輸入 exit 可離開）`',
+    attachments: [{
+      color: '#000',
+      mrkdwn_in: ['text', 'pretext', 'fields'],
+      thumb_url: inputs.thumb,
+      title: inputs.title,
+      title_link: inputs.url,
+      text: _.filter([`坑主: <@${user}>`, inputs.tags]).join('\n'),
+    }],
+  };
+}
+
 function inputThumb(user, inputs) {
   Interaction.set(user, async ({ text }) => {
     let thumb = _.trim(text);
 
     if (thumb === 'skip') thumb = null;
 
-    return saveProject(user, { ...inputs, thumb });
+    return confirm(user, { ...inputs, thumb });
   });
 
   return '請輸入專案的縮圖網址？支援 GIF, JPEG, PNG 格式的 75px X 75px\n`（輸入 skip 可跳過）`';

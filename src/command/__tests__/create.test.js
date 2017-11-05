@@ -28,6 +28,12 @@ describe('create command', () => {
     });
 
     await index({ ...data, text: 'https://project.g0v.tw/index.png' });
+    expect(Slack.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({
+      channel: 'D100',
+      text: '請確認資料如下？（輸入 yes 完成建立）\n`（輸入 exit 可離開）`',
+    }));
+
+    await index({ ...data, text: 'yes' });
     expect(Slack.postMessage).toHaveBeenLastCalledWith({
       channel: 'D100',
       text: 'Done, create g0ver-box',
@@ -71,6 +77,12 @@ describe('create command', () => {
     });
 
     await index({ ...data, text: 'skip' });
+    expect(Slack.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({
+      channel: 'D100',
+      text: '請確認資料如下？（輸入 yes 完成建立）\n`（輸入 exit 可離開）`',
+    }));
+
+    await index({ ...data, text: 'yes' });
     expect(Slack.postMessage).toHaveBeenLastCalledWith({
       channel: 'D100',
       text: 'Done, create g0ver-box',
