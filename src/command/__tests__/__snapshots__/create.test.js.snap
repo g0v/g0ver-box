@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create command when project does not exist 1`] = `
+Array [
+  "select * from project where deleted_at is null and title = g0ver-box limit 1",
+  "insert into project (archive, created_at, keyword, title, updated_at, user_id) values ({\\"url\\":\\"https://project.g0v.tw/\\",\\"tags\\":\\"找人 找坑\\",\\"thumb\\":\\"https://project.g0v.tw/index.png\\"}, DATE, 找人 找坑, g0ver-box, DATE, U03B2AB13) returning id",
+]
+`;
+
+exports[`create command when project is existed 1`] = `
+Array [
+  "select * from project where deleted_at is null and title = g0ver-box limit 1",
+]
+`;
+
+exports[`create command when use skip 1`] = `
+Array [
+  "select * from project where deleted_at is null and title = g0ver-box limit 1",
+  "insert into project (archive, created_at, keyword, title, updated_at, user_id) values ({\\"url\\":null,\\"tags\\":null,\\"thumb\\":null}, DATE, , g0ver-box, DATE, U03B2AB13) returning id",
+]
+`;

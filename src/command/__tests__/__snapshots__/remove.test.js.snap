@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`remove command remove <title> permission denied 1`] = `
+Array [
+  "select * from project where deleted_at is null and title = g0ver box limit 1",
+]
+`;
+
+exports[`remove command remove <title> successfully deleted 1`] = `
+Array [
+  "select * from project where deleted_at is null and title = g0ver box limit 1",
+  "update project set deleted_at = DATE where deleted_at is null and id = 5",
+]
+`;
+
+exports[`remove command remove <title> when project does not exist 1`] = `
+Array [
+  "select * from project where deleted_at is null and title = g0ver box limit 1",
+]
+`;
+
+exports[`remove command remove [title] when project does not exist 1`] = `
+Array [
+  "select * from project where deleted_at is null and user_id = U03B2AB13 limit 1000",
+]
+`;
+
+exports[`remove command remove [title] when project is existed successfully deleted 1`] = `
+Array [
+  "select * from project where deleted_at is null and user_id = U03B2AB13 limit 1000",
+  "update project set deleted_at = DATE where deleted_at is null and id = 3",
+]
+`;
+
+exports[`remove command remove [title] when project is existed when not found project 1`] = `
+Array [
+  "select * from project where deleted_at is null and user_id = U03B2AB13 limit 1000",
+]
+`;

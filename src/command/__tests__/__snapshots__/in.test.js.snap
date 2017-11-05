@@ -1,15 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`in command when g0ver have setting expired 1`] = `
+exports[`in command in <note> <hours> 1`] = `
 Array [
-  "update task set deleted_at = DATE where user_id = U03B2AB13 and deleted_at is null and expired_at > DATE",
-  "insert into task (created_at, expired_at, note, updated_at, user_id) values (DATE, DATE, g0ver box, DATE, U03B2AB13) returning id",
+  "select * from project where deleted_at is null limit 1000",
+  "update task set expired_at = DATE where user_id = U03B2AB13 and deleted_at is null and expired_at > DATE",
+  "insert into task (created_at, expired_at, note, updated_at) values (DATE, DATE, fix issue, DATE) returning id",
 ]
 `;
 
-exports[`in command when g0ver no any task 1`] = `
+exports[`in command in <note> [hours] 1`] = `
 Array [
-  "update task set deleted_at = DATE where user_id = U03B2AB13 and deleted_at is null and expired_at > DATE",
-  "insert into task (created_at, expired_at, note, updated_at, user_id) values (DATE, DATE, g0ver box, DATE, U03B2AB13) returning id",
+  "select * from project where deleted_at is null limit 1000",
+  "update task set expired_at = DATE where user_id = U03B2AB13 and deleted_at is null and expired_at > DATE",
+  "insert into task (created_at, expired_at, note, updated_at) values (DATE, DATE, fix issue, DATE) returning id",
+]
+`;
+
+exports[`in command in [note] [hours] input note when has note 1`] = `
+Array [
+  "select * from project where deleted_at is null limit 1000",
+  "update task set expired_at = DATE where user_id = U03B2AB13 and deleted_at is null and expired_at > DATE",
+  "insert into task (created_at, expired_at, note, project_id, updated_at) values (DATE, DATE, note information, 3, DATE) returning id",
+]
+`;
+
+exports[`in command in [note] [hours] input note when hasn't note 1`] = `
+Array [
+  "select * from project where deleted_at is null limit 1000",
+  "update task set expired_at = DATE where user_id = U03B2AB13 and deleted_at is null and expired_at > DATE",
+  "insert into task (created_at, expired_at, note, project_id, updated_at) values (DATE, DATE, null, 3, DATE) returning id",
+]
+`;
+
+exports[`in command in [note] [hours] when found projects 1`] = `
+Array [
+  "select * from project where deleted_at is null limit 1000",
+]
+`;
+
+exports[`in command in [note] [hours] when no found projects 1`] = `
+Array [
+  "select * from project where deleted_at is null limit 1000",
+  "update task set expired_at = DATE where user_id = U03B2AB13 and deleted_at is null and expired_at > DATE",
+  "insert into task (created_at, expired_at, note, updated_at) values (DATE, DATE, ya! a note, DATE) returning id",
 ]
 `;

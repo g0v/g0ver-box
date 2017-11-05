@@ -7,11 +7,11 @@ export default class G0ver extends Model {
 
   static tableName = 'g0ver';
 
-  static columns = {
+  static columns = () => ({
     username: new ValueColumn(),
     skills: new ListColumn(),
     slogan: new ValueColumn(),
-  }
+  })
 
   static toKeyword({ skills }) {
     return _.toLower((skills || []).join(' '));

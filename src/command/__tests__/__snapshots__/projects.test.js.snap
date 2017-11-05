@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`projects command database projects 1`] = `
+Array [
+  Array [
+    Object {
+      "attachments": Array [
+        Object {
+          "color": "#000",
+          "mrkdwn_in": Array [
+            "text",
+            "pretext",
+            "fields",
+          ],
+          "text": "坑主: <@U03B2AB13>
+找人 找坑",
+          "thumb_url": "https://project.g0v.tw/index.png",
+          "title": "g0ver-box",
+          "title_link": "https://project.g0v.tw/",
+        },
+      ],
+      "channel": "D100",
+      "text": "下列專案歡迎你的加入：",
+    },
+  ],
+]
+`;
+
+exports[`projects command successful query 1`] = `
+Array [
+  "select * from project where deleted_at is null limit 1000",
+]
+`;
+
+exports[`projects command successful query 2`] = `
+Array [
+  Array [
+    Object {
+      "attachments": Array [
+        Object {
+          "color": "#000",
+          "mrkdwn_in": Array [
+            "text",
+            "pretext",
+            "fields",
+          ],
+          "text": "坑主: <@U03B2AB13>
+媒合 挖坑 推坑",
+          "thumb_url": "https://g0v.tw/thumb.gif",
+          "title": "g0ver box",
+          "title_link": "https://g0v.tw/",
+        },
+        Object {
+          "color": "#000",
+          "mrkdwn_in": Array [
+            "text",
+            "pretext",
+            "fields",
+          ],
+          "text": "坑主: <@U03B2AB00>",
+          "thumb_url": null,
+          "title": "g0v today",
+          "title_link": "https://g0v.tw/",
+        },
+      ],
+      "channel": "D100",
+      "text": "下列專案歡迎你的加入：",
+    },
+  ],
+]
+`;

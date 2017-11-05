@@ -15,6 +15,16 @@ export default async function () {
       color: '#000',
       mrkdwn_in: ['text', 'pretext', 'fields'],
       text: [
+        '*挖坑 找坑*',
+        '`create`, `remove`, `projects`',
+        '`create <title>` 挖坑， title 為專案名稱',
+        '`remove [title]` 清坑， title ( 選填 ) 為專案名稱',
+        '`projects` 列出所有的坑',
+      ].join('\n'),
+    }, {
+      color: '#000',
+      mrkdwn_in: ['text', 'pretext', 'fields'],
+      text: [
         '*推坑 找人*',
         '`whois`, `search`',
         '`whois <@username>` 查詢 g0ver 登錄了哪些關鍵字 ( ex. whois @yutin )',
@@ -26,14 +36,23 @@ export default async function () {
       text: [
         '*入坑 出坑*',
         '`in`, `all`, `out`',
-        '`in <project / task> <hours>` 進入某個坑裡，hours ( 選填 ) 預計幾小時後出坑',
+        '`in [note] [hours]` 進入某個坑裡，hours ( 選填 ) 預計幾小時後出坑',
         '`out` 離開某個坑',
         '`all` 顯示 g0ver 正在哪些坑，也許他們需要你的加入',
       ].join('\n'),
     }, {
       color: '#000',
       mrkdwn_in: ['text', 'pretext', 'fields'],
-      text: '*揪松 找松*\n To Do',
+      text: [
+        '*揪松 找松*',
+        '`jothon`, `cancel`, `events`, `follow`, `unfollow`, `notice`',
+        '`jothon <title>` 揪松， title 為活動名稱',
+        '`cancel [title]` 取消活動， title ( 選填 ) 為活動名稱',
+        '`events` 列出即將到來的大松小松',
+        '`follow [title]` *ToDo* 追蹤指定的松， title ( 選填 ) 為活動名稱',
+        '`unfollow [title]` *ToDo* 取消追蹤， title ( 選填 ) 為活動名稱',
+        '`notice <message>` *ToDo* 發訊息通知關注者， message 為訊息內容',
+      ].join('\n'),
     }, {
       color: '#000',
       mrkdwn_in: ['text', 'pretext', 'fields'],
