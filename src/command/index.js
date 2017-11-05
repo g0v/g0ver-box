@@ -11,6 +11,9 @@ import cmdDel from './del';
 import cmdCreate from './create';
 import cmdRemove from './remove';
 import cmdProjects from './projects';
+import cmdJothon from './jothon';
+import cmdCancel from './cancel';
+import cmdEvents from './events';
 import cmdWhoami from './whoami';
 import cmdSearch from './search';
 import cmdWhois from './whois';
@@ -26,9 +29,9 @@ const qna = [
   { handler: cmdCreate, regexp: new XRegExp('^create (?<title>.+)', 'i') },
   { handler: cmdRemove, regexp: new XRegExp('remove(?<value>.*)', 'i') },
   { handler: cmdProjects, regexp: /^projects/i },
-  // { handler: cmdJothon, regexp: new XRegExp('jothon (?<name>.+)', 'i') },
-  // { handler: cmdEvents, regexp: /^events/i },
-  // { handler: cmdCancel, regexp: new XRegExp('cancel (?<name>.+)', 'i') },
+  { handler: cmdJothon, regexp: new XRegExp('jothon (?<title>.+)', 'i') },
+  { handler: cmdCancel, regexp: new XRegExp('cancel(?<value>.*)', 'i') },
+  { handler: cmdEvents, regexp: /^events/i },
   // { handler: cmdNotice, regexp: new XRegExp('notice (?<name>.+)', 'i') },
   // { handler: cmdFollow, regexp: new XRegExp('follow (?<name>.+)', 'i') },
   // { handler: cmdUnfollow, regexp: new XRegExp('unfollow (?<name>.+)', 'i') },
@@ -56,12 +59,12 @@ export default async function (data) {
     answer = await interaction(data);
   }
 
-  do {
+  while (!answer && index < qna.length) {
     const { handler, regexp } = qna[index];
     const match = XRegExp.exec(message, regexp);
     if (match) answer = await handler(match, data);
     index += 1;
-  } while (!answer && index < qna.length);
+  }
 
   if (!answer) answer = await cmdHelp();
 

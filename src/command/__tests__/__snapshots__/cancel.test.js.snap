@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cancel command cancel <name> permission denied 1`] = `
+Array [
+  "select * from event where deleted_at is null and title = 基礎建設松 limit 1",
+]
+`;
+
+exports[`cancel command cancel <name> successfully deleted 1`] = `
+Array [
+  "select * from event where deleted_at is null and title = 基礎建設松 limit 1",
+  "update event set deleted_at = DATE where deleted_at is null and id = 5",
+]
+`;
+
+exports[`cancel command cancel <name> when event does not exist 1`] = `
+Array [
+  "select * from event where deleted_at is null and title = 基礎建設松 limit 1",
+]
+`;
+
+exports[`cancel command remove [name] when event does not exist 1`] = `
+Array [
+  "select * from event where deleted_at is null and user_id = U03B2AB13 limit 1000",
+]
+`;
+
+exports[`cancel command remove [name] when event is existed successfully deleted 1`] = `
+Array [
+  "select * from event where deleted_at is null and user_id = U03B2AB13 limit 1000",
+  "update event set deleted_at = DATE where deleted_at is null and id = 3",
+]
+`;
+
+exports[`cancel command remove [name] when event is existed when not found event 1`] = `
+Array [
+  "select * from event where deleted_at is null and user_id = U03B2AB13 limit 1000",
+]
+`;

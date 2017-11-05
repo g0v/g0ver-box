@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jothon command when event does not exist 1`] = `
+Array [
+  "select * from event where deleted_at is null and title = 基礎建設松 limit 1",
+  "insert into event (archive, created_at, datetime, title, updated_at, user_id) values ({\\"url\\":\\"https://events.g0v.tw/\\"}, DATE, DATE, 基礎建設松, DATE, U03B2AB13) returning id",
+]
+`;
+
+exports[`jothon command when event is existed 1`] = `
+Array [
+  "select * from event where deleted_at is null and title = 基礎建設松 limit 1",
+]
+`;

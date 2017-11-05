@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`projects command database events 1`] = `
+Array [
+  Array [
+    Object {
+      "attachments": Array [
+        Object {
+          "color": "#000",
+          "mrkdwn_in": Array [
+            "text",
+            "pretext",
+            "fields",
+          ],
+          "text": "<!date^1514732400000^{date_num} at {time}|unknown>
+聯絡人: <@U03B2AB13>",
+          "title": "基礎建設松",
+          "title_link": "https://events.g0v.tw/",
+        },
+      ],
+      "channel": "D100",
+      "text": "下列活動歡迎你的參加：",
+    },
+  ],
+]
+`;
+
+exports[`projects command successful query 1`] = `
+Array [
+  "select * from event where deleted_at is null limit 1000",
+]
+`;
+
+exports[`projects command successful query 2`] = `
+Array [
+  Array [
+    Object {
+      "attachments": Array [
+        Object {
+          "color": "#000",
+          "mrkdwn_in": Array [
+            "text",
+            "pretext",
+            "fields",
+          ],
+          "text": "<!date^1509861600000^{date_num} at {time}|unknown>
+聯絡人: <@U03B2AB13>",
+          "title": "基礎建設松",
+          "title_link": "https://g0v.tw/",
+        },
+        Object {
+          "color": "#000",
+          "mrkdwn_in": Array [
+            "text",
+            "pretext",
+            "fields",
+          ],
+          "text": "<!date^1512916200000^{date_num} at {time}|unknown>
+聯絡人: <@U03B2AB00>",
+          "title": "新聞新聞松",
+          "title_link": null,
+        },
+      ],
+      "channel": "D100",
+      "text": "下列活動歡迎你的參加：",
+    },
+  ],
+]
+`;

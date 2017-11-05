@@ -2,17 +2,17 @@ import { client } from 'knex';
 import Slack from '../../Slack';
 import index from '../';
 
-describe('remove command', () => {
-  describe('remove <title>', () => {
-    const data = { channel: 'D100', user: 'U03B2AB13', name: 'yutin', text: 'remove g0ver box' };
+describe('cancel command', () => {
+  describe('cancel <name>', () => {
+    const data = { channel: 'D100', user: 'U03B2AB13', name: 'yutin', text: 'cancel 基礎建設松' };
 
-    it('when project does not exist', async () => {
+    it('when event does not exist', async () => {
       client.mockReturnValueOnce([]);
 
       await index(data);
       expect(Slack.postMessage).toHaveBeenLastCalledWith({
         channel: 'D100',
-        text: 'Sorry! 找不到專案',
+        text: 'Sorry! 找不到活動',
       });
 
       expect(client).toHaveBeenCalledTimes(1);
@@ -25,7 +25,7 @@ describe('remove command', () => {
       await index(data);
       expect(Slack.postMessage).toHaveBeenLastCalledWith({
         channel: 'D100',
-        text: 'Sorry! 沒有權限刪除 g0ver box 專案',
+        text: 'Sorry! 沒有權限取消 基礎建設松 活動',
       });
 
       expect(client).toHaveBeenCalledTimes(1);
@@ -39,7 +39,7 @@ describe('remove command', () => {
       await index(data);
       expect(Slack.postMessage).toHaveBeenLastCalledWith({
         channel: 'D100',
-        text: 'Done, 刪除 g0ver box 專案',
+        text: 'Done, 取消 基礎建設松 活動',
       });
 
       expect(client).toHaveBeenCalledTimes(2);
@@ -47,40 +47,40 @@ describe('remove command', () => {
     });
   });
 
-  describe('remove [title]', () => {
-    const data = { channel: 'D100', user: 'U03B2AB13', name: 'yutin', text: 'remove' };
+  describe('remove [name]', () => {
+    const data = { channel: 'D100', user: 'U03B2AB13', name: 'yutin', text: 'cancel' };
 
-    it('when project does not exist', async () => {
+    it('when event does not exist', async () => {
       client.mockReturnValueOnce([]);
 
       await index(data);
 
       expect(Slack.postMessage).toHaveBeenLastCalledWith({
         channel: 'D100',
-        text: 'Sorry! 找不到坑，快來挖坑吧',
+        text: 'Sorry! 找不到活動，快來揪松吧',
       });
 
       expect(client).toHaveBeenCalledTimes(1);
       expect(client).toMatchSnapshot();
     });
 
-    describe('when project is existed', () => {
+    describe('when event is existed', () => {
       beforeEach(async () => {
         client.mockReturnValueOnce([
-          { id: '3', title: 'g0ver box' },
-          { id: '5', title: 'project 0001' },
-          { id: '6', title: 'project 0002' },
-          { id: '9', title: 'project 0003' },
+          { id: '3', title: '基礎建設松' },
+          { id: '5', title: 'event 0001' },
+          { id: '6', title: 'event 0002' },
+          { id: '9', title: 'event 0003' },
         ]);
 
         await index(data);
       });
 
-      it('when not found project', async () => {
+      it('when not found event', async () => {
         await index({ ...data, text: '0' });
         expect(Slack.postMessage).toHaveBeenLastCalledWith({
           channel: 'D100',
-          text: 'Sorry! 找不到專案',
+          text: 'Sorry! 找不到活動',
         });
 
         expect(client).toHaveBeenCalledTimes(1);
@@ -92,13 +92,13 @@ describe('remove command', () => {
 
         expect(Slack.postMessage).toHaveBeenLastCalledWith({
           channel: 'D100',
-          text: expect.stringContaining('請選擇要刪除的專案（輸入代碼）？'),
+          text: expect.stringContaining('請選擇要取消的活動（輸入代碼）？'),
         });
 
         await index({ ...data, text: '1' });
         expect(Slack.postMessage).toHaveBeenLastCalledWith({
           channel: 'D100',
-          text: 'Done, 刪除 g0ver box 專案',
+          text: 'Done, 取消 基礎建設松 活動',
         });
 
         expect(client).toHaveBeenCalledTimes(2);
