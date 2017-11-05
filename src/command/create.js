@@ -60,7 +60,7 @@ function inputTags(user, inputs) {
 
 function inputURL(user, inputs) {
   Interaction.set(user, ({ text }) => {
-    let url = _.trim(text);
+    let url = _.trim(text, '<> ');
 
     if (url === 'skip') url = null;
 
