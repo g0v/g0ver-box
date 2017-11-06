@@ -74,7 +74,7 @@ bot.member_joined_channel(async (data) => {
     attachments: [{
       color: '#000',
       mrkdwn_in: ['text', 'pretext', 'fields'],
-      text: '*了解更多*\n <http://g0v.tw/zh-TW/manifesto.html|g0v 宣言> - <https://g0v-jothon.kktix.cc/|g0v 揪松團> - <https://www.facebook.com/g0v.tw/ 粉絲專頁> - <https://github.com/g0v|g0v Github>',
+      text: '*了解更多*\n <http://g0v.tw/zh-TW/manifesto.html|g0v 宣言> - <https://g0v-jothon.kktix.cc/|g0v 揪松團> - <https://www.facebook.com/g0v.tw/|g0v 粉絲專頁> - <https://github.com/g0v|g0v Github>',
     }],
   });
 });
