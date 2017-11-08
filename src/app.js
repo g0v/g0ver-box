@@ -66,7 +66,7 @@ bot.member_joined_channel(async (data) => {
   if (channel !== generalId) return;
 
   Slack.postMessage({
-    channel,
+    channel: user,
     text: [
       `歡迎 <@${user}> 來到 g0v 社群`,
       '私訊 <@g0ver> 並輸入 `help`，我將熱血為您服務。也可以輸入 `search g0v大使` 這些人可以協助你了解 g0v',
