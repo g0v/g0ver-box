@@ -6,6 +6,7 @@ import DataLoader from 'dataloader';
 import Slack, { bot } from './Slack';
 import Schema from './Schema';
 import command from './command';
+import G0ver from './model/G0ver';
 
 const NODE_PORT = process.env.PORT || 8080;
 const BOT_NAME = process.env.SLACK_BOT_ID || 'g0ver';
@@ -65,7 +66,7 @@ bot.member_joined_channel(async (data) => {
 
   if (channel !== generalId) return;
 
-  Slack.postMessage({
+  const reply = Slack.postMessage({
     channel: user,
     text: [
       `歡迎 <@${user}> 來到 g0v 社群`,
@@ -77,4 +78,8 @@ bot.member_joined_channel(async (data) => {
       text: '*了解更多*\n <http://g0v.tw/zh-TW/manifesto.html|g0v 宣言> - <https://g0v-jothon.kktix.cc/|g0v 揪松團> - <https://www.facebook.com/g0v.tw/|g0v 粉絲專頁> - <https://github.com/g0v|g0v Github>',
     }],
   });
+
+  const g0ver = await G0ver.load(user) || await new G0ver({ id: user }).insert();
+  g0ver.channel = reply.channel;
+  await g0ver.save();
 });

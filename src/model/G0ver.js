@@ -9,6 +9,7 @@ export default class G0ver extends Model {
 
   static columns = () => ({
     username: new ValueColumn(),
+    channel: new ValueColumn(),
     skills: new ListColumn(),
     slogan: new ValueColumn(),
   })
