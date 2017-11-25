@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import XRegExp from 'xregexp';
-import Slack, { bot } from '../Slack';
+import Slack from '../Slack';
+import G0ver from '../model/G0ver';
 import Interaction from '../model/Interaction';
 import cmdHelp from './help';
 import cmdIn from './in';
@@ -75,5 +76,12 @@ export default async function (data) {
     return;
   }
 
-  Slack.postMessage({ channel, text: answer });
+  const reply = await Slack.postMessage({ channel, text: answer });
+  if (reply && /^D.+$/.test(reply.channel)) {
+    const g0ver = await G0ver.load(user) || await new G0ver({ id: user }).insert();
+    if (g0ver.channel) {
+      g0ver.channel = reply.channel;
+      await g0ver.save();
+    }
+  }
 }
